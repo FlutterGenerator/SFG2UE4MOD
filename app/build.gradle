@@ -1,0 +1,68 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace "Tojik.Mods"
+    compileSdk 33  
+
+    defaultConfig {
+        applicationId "Tojik.Mods"
+        minSdk 21
+        targetSdk 33 
+        versionCode 33
+        versionName "2.9"
+
+        ndk {
+            abiFilters 'armeabi-v7a'
+        }
+
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("HunMod.keystore")  // Путь к keystore
+            storePassword "HunMod"  // Заменить на реальный пароль
+            keyAlias "HunMod"       // Заменить на реальный alias
+            keyPassword "HunMod"    // Заменить на реальный пароль
+        }
+    }
+
+    buildTypes {
+        release {
+            debuggable false
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            debuggable true
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release // Подписывать и debug версию (по желанию)
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    externalNativeBuild {
+        ndkBuild {
+            path file('src/main/jni/Android.mk')
+        }
+    }
+}
+
+dependencies {
+}

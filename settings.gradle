@@ -1,0 +1,17 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)  // Это запрещает использование репозиториев в build.gradle
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.name = "PROJECT-HunMod"
+include(":app")
