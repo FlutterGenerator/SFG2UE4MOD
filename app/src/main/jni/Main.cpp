@@ -168,7 +168,7 @@ Java_Tojik_Mods_modmenu_FloatingModMenuService_getFeatureList(JNIEnv *env, jobje
 		    //Website
             ("Category_FOR MORE"), //Not counted
             ("ButtonLink_ MY BLOGSPOT_https://elementman50.blogspot.com"), //Not counted       
-            ("ButtonLink_ Telegram Chanell_https://t.me/gtauzbekgames"), //Not counted       
+            ("ButtonLink_ Telegram Chanell_https://t.me/linkuzbio"), //Not counted       
             ("ButtonLink_ YouTube Chanell_https://youtube.com/@saveeditoronlinecom"), //Not counted       
           };
     
