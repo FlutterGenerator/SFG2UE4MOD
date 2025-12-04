@@ -14,7 +14,7 @@
 #include "And64InlineHook/And64InlineHook.hpp"
 #include "Menu.h"
 
-const char* targetLibName2 = "libUE4.so";
+const char* targetLibName = "libUE4.so";
 
 #include "Includes/Macros.h"
 
@@ -207,9 +207,8 @@ Java_Tojik_Mods_modmenu_Preferences_Changes(JNIEnv *env, jclass clazz, jobject o
             } else {
                 hexPatches.Aim.Restore();
             }
-            break;         
+            break;
             
-			
 			case 2:
             PickupWeaponVisible = boolean;
             if (PickupWeaponVisible) {
@@ -217,7 +216,7 @@ Java_Tojik_Mods_modmenu_Preferences_Changes(JNIEnv *env, jclass clazz, jobject o
             } else {
                 hexPatches.PickupWeaponVisible.Restore();
             }
-            break;          
+            break;
             
             case 3:
             ShopAlwaysVisible = boolean;
@@ -226,9 +225,8 @@ Java_Tojik_Mods_modmenu_Preferences_Changes(JNIEnv *env, jclass clazz, jobject o
             } else {
                 hexPatches.ShopAlwaysVisible.Restore();
             }
-            break;           
+            break;
             
-			
 			case 4:
             NoRecoilCtoshair = boolean;
             if (NoRecoilCtoshair) {
@@ -236,7 +234,7 @@ Java_Tojik_Mods_modmenu_Preferences_Changes(JNIEnv *env, jclass clazz, jobject o
             } else {
                 hexPatches.NoRecoilCtoshair.Restore();
             }
-            break;           
+            break;
             
 			case 5:
             UnlimitedCliP = boolean;
@@ -255,7 +253,7 @@ Java_Tojik_Mods_modmenu_Preferences_Changes(JNIEnv *env, jclass clazz, jobject o
                 hexPatches.NoDead.Restore();
             }
             break;
-			
+            
 			case 7:
             CurrentTimeRound = boolean;
             if (CurrentTimeRound) {
@@ -264,7 +262,7 @@ Java_Tojik_Mods_modmenu_Preferences_Changes(JNIEnv *env, jclass clazz, jobject o
                 hexPatches.CurrentTimeRound.Restore();
             }
             break;
-			
+            
 			case 8:
             Ammo = boolean;
             if (Ammo) {
@@ -273,6 +271,7 @@ Java_Tojik_Mods_modmenu_Preferences_Changes(JNIEnv *env, jclass clazz, jobject o
                 hexPatches.Ammo.Restore();
             }
             break;
+            
 			case 9:
             SmallCrosshair = boolean;
             if (SmallCrosshair) {
@@ -281,6 +280,7 @@ Java_Tojik_Mods_modmenu_Preferences_Changes(JNIEnv *env, jclass clazz, jobject o
                 hexPatches.SmallCrosshair.Restore();
             }
             break;
+            
 			case 10:
             AntiFlashBang = boolean;
             if (AntiFlashBang) {
@@ -289,6 +289,7 @@ Java_Tojik_Mods_modmenu_Preferences_Changes(JNIEnv *env, jclass clazz, jobject o
                 hexPatches.AntiFlashBang.Restore();
             }
             break;
+            
 			case 11:
             UnlimitedMoney = boolean;
             if (UnlimitedMoney) {
@@ -297,6 +298,7 @@ Java_Tojik_Mods_modmenu_Preferences_Changes(JNIEnv *env, jclass clazz, jobject o
                 hexPatches.UnlimitedMoney.Restore();
             }
             break;
+            
 			case 12:
             AManHit = boolean;
             if (AManHit) {
@@ -305,7 +307,7 @@ Java_Tojik_Mods_modmenu_Preferences_Changes(JNIEnv *env, jclass clazz, jobject o
                 hexPatches.AManHit.Restore();
             }
             break;
-			
+            
 			case 13:
             UAnimMontage = boolean;
             if (UAnimMontage) {
@@ -314,7 +316,7 @@ Java_Tojik_Mods_modmenu_Preferences_Changes(JNIEnv *env, jclass clazz, jobject o
                 hexPatches.UAnimMontage.Restore();
             }
             break;
-			
+            
 			case 14:
             USkinEditorWidget = boolean;
             if (USkinEditorWidget) {
@@ -323,6 +325,7 @@ Java_Tojik_Mods_modmenu_Preferences_Changes(JNIEnv *env, jclass clazz, jobject o
                 hexPatches.USkinEditorWidget.Restore();
             }
             break;
+            
 			case 15:
             SpawnPlayerCameraManager = boolean;
             if (SpawnPlayerCameraManager) {
@@ -331,6 +334,7 @@ Java_Tojik_Mods_modmenu_Preferences_Changes(JNIEnv *env, jclass clazz, jobject o
                 hexPatches.SpawnPlayerCameraManager.Restore();
             }
             break;
+            
 			case 16:
             UpdateCameraManager = boolean;
             if (UpdateCameraManager) {
@@ -339,6 +343,7 @@ Java_Tojik_Mods_modmenu_Preferences_Changes(JNIEnv *env, jclass clazz, jobject o
                 hexPatches.UpdateCameraManager.Restore();
             }
             break;
+            
             case 17:
             FastLobby = boolean;
             if (FastLobby) {
@@ -347,6 +352,7 @@ Java_Tojik_Mods_modmenu_Preferences_Changes(JNIEnv *env, jclass clazz, jobject o
                 hexPatches.FastLobby.Restore();
             }
             break;
+            
             case 18:
             AutoFireWeapons = boolean;
             if (AutoFireWeapons) {
@@ -355,6 +361,7 @@ Java_Tojik_Mods_modmenu_Preferences_Changes(JNIEnv *env, jclass clazz, jobject o
                 hexPatches.AutoFireWeapons.Restore();
             }
             break;
+            
             case 19:
             FreezeMoney = boolean;
             if (FreezeMoney) {
@@ -363,6 +370,7 @@ Java_Tojik_Mods_modmenu_Preferences_Changes(JNIEnv *env, jclass clazz, jobject o
                 hexPatches.FreezeMoney.Restore();
             }
             break;
+            
             case 20:
             NoGravity = boolean;
             if (NoGravity) {
@@ -371,50 +379,56 @@ Java_Tojik_Mods_modmenu_Preferences_Changes(JNIEnv *env, jclass clazz, jobject o
                 hexPatches.NoGravity.Restore();
             }
             break;
+            
             case 21:
             SpeedHack = boolean;
             if (SpeedHack) {
-                    hexPatches.SpeedHack.Modify();
+                hexPatches.SpeedHack.Modify();
             } else {
                 hexPatches.SpeedHack.Restore();
             }
             break;
+            
             case 22:
             AddBan = boolean;
             if (AddBan) {
-                    hexPatches.AddBan.Modify();
+                hexPatches.AddBan.Modify();
             } else {
                 hexPatches.AddBan.Restore();
             }
             break;
+            
             case 23:
             CheckBan = boolean;
             if (CheckBan) {
-                    hexPatches.CheckBan.Modify();
+                hexPatches.CheckBan.Modify();
             } else {
                 hexPatches.CheckBan.Restore();
             }
             break;
+            
             case 24:
             CheckBan_Response = boolean;
             if (CheckBan_Response) {
-                    hexPatches.CheckBan_Response.Modify();
+                hexPatches.CheckBan_Response.Modify();
             } else {
                 hexPatches.CheckBan_Response.Restore();
             }
             break;
+            
             case 25:
             IHackProperty = boolean;
             if (IHackProperty) {
-                    hexPatches.IHackProperty.Modify();
+                hexPatches.IHackProperty.Modify();
             } else {
                 hexPatches.IHackProperty.Restore();
             }
             break;
+            
             case 26:
             HACK_ForceToFront = boolean;
             if (HACK_ForceToFront) {
-                    hexPatches.HACK_ForceToFront.Modify();
+                hexPatches.HACK_ForceToFront.Modify();
             } else {
                 hexPatches.HACK_ForceToFront.Restore();
             }
@@ -429,4 +443,3 @@ void lib_main() {
     pthread_t ptid;
     pthread_create(&ptid, NULL, hack_thread, NULL);
 }
-
