@@ -1,3 +1,3 @@
 <resources>
-    <string name="app_name">PROJECT HunMod</string>
+    <string name="app_name" translatable="false">PROJECT HunMod</string>
 </resources>
