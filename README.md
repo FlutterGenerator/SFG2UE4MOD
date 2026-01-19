@@ -1,6 +1,8 @@
 # SFG2UE4MOD
 [![SFG2UE4MOD Build](https://github.com/FlutterGenerator/SFG2UE4MOD/actions/workflows/build-apk.yml/badge.svg)](https://github.com/FlutterGenerator/SFG2UE4MOD/actions/workflows/build-apk.yml)
 
+[![License Info](https://img.shields.io/badge/License-GPL--3.0-blue.svg?style=flat-square)](https://github.com/FlutterGenerator/SFG2UE4MOD/blob/master/LICENSE)
+
 # SpecialForcesGroup2 Version: (164) – 4.21
 **Google Play Release Date:** 25 October 2024
 
