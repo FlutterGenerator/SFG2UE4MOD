@@ -54,7 +54,7 @@ void patchOffset(const char *fileName, uint64_t offset, std::string hexBytes) {
 }
 
 void patchOffset(uint64_t offset, std::string hexBytes) {
-    MemoryPatch patch = MemoryPatch::createWithHex(targetLibName2, offset, hexBytes);
+    MemoryPatch patch = MemoryPatch::createWithHex(targetLibName, offset, hexBytes);
     if(!patch.isValid()){
         LOGE(("Failing offset: 0x%llu, please re-check the hex you entered."), offset);
         return;
