@@ -19,7 +19,6 @@ import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.IBinder;
 import android.text.Html;
 import android.text.InputFilter;
@@ -54,9 +53,6 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.text.Html;
-import android.graphics.drawable.Drawable;
-import android.widget.SeekBar;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -78,7 +74,7 @@ public class FloatingModMenuService extends Service {
     int TEXT_COLOR_2 = Color.parseColor("#FFFFFF");
     int BTN_COLOR = Color.parseColor("#FFE71616");
     int MENU_BG_COLOR = Color.parseColor("#FFE41B1B"); //#AARRGGBB
-    int MENU_FEATURE_BG_COLOR = Color.parseColor("#008100"); //#AARRGGBB
+    int MENU_FEATURE_BG_COLOR = Color.parseColor("#FFE41B1B"); //#AARRGGBB
     int MENU_WIDTH = 264;
     int MENU_HEIGHT = 205;
     float MENU_CORNER = 20f;
@@ -89,7 +85,7 @@ public class FloatingModMenuService extends Service {
     int BtnON = Color.parseColor("#1b5e20");
     int BtnOFF = Color.parseColor("#7f0000");
     int CategoryBG = Color.parseColor("#FF000000");
-    int CategoryBG1 = Color.parseColor("#fff19191");
+    int CategoryBG1 = Color.parseColor("#FFC40AEB");
     int SeekBarColor = Color.parseColor("#80CBC4");
     int SeekBarProgressColor = Color.parseColor("#FF010B0F");
     int CheckBoxColor = Color.parseColor("#FF030F14");
@@ -133,7 +129,7 @@ public class FloatingModMenuService extends Service {
         initFloating();
 
         //Create a handler for this Class
-        final Handler handler = new Handler(Looper.getMainLooper());
+        final Handler handler = new Handler();
         handler.post(new Runnable() {
             public void run() {
                 Thread();
@@ -153,12 +149,12 @@ public class FloatingModMenuService extends Service {
         mCollapsed.setAlpha(ICON_ALPHA);
 
         //********** The box of the mod menu **********
-        mExpanded = new LinearLayout(this); // Menu markup (when the menu is expanded)
+mExpanded = new LinearLayout(this); // Menu markup (when the menu is expanded)
         mExpanded.setVisibility(View.GONE);
        	GradientDrawable BN_THUMB5 = new GradientDrawable();
         BN_THUMB5.setColor(Color.parseColor("#FF000000"));
-        BN_THUMB5.setCornerRadii(new float[]{60f, 60f, 60f, 60f, 60f, 60f, 60f, 60f});
-        BN_THUMB5.setStroke(4, Color.parseColor("#FF736C6C"));
+        BN_THUMB5.setCornerRadii(new float[]{(int)60,(int)60,(int)0,(int)0,(int)60,(int)60,(int)0,(int)0});
+	    BN_THUMB5.setStroke((int) 4, Color.parseColor("#FF736C6C"));
         mExpanded.setBackground(BN_THUMB5);
         mExpanded.setOrientation(LinearLayout.VERTICAL);
         mExpanded.setPadding(10, 10, 10, 10); //So borders would be visible
@@ -296,8 +292,8 @@ public class FloatingModMenuService extends Service {
 		
 		GradientDrawable BN_THUMB = new GradientDrawable();
         BN_THUMB.setColor(Color.parseColor("#FF000000"));
-        BN_THUMB.setCornerRadii(new float[]{20f, 20f, 20f, 20f, 20f, 20f, 20f, 20f});
-        BN_THUMB.setStroke(3, Color.parseColor("#FFFAFAFA"));
+        BN_THUMB.setCornerRadii(new float[]{(int)20,(int)20,(int)20,(int)20,(int)20,(int)20,(int)20,(int)20});
+	    BN_THUMB.setStroke((int) 3, Color.parseColor("#FFFAFAFA"));
         hideBtn.setBackground(BN_THUMB);
        
 		
@@ -323,8 +319,8 @@ public class FloatingModMenuService extends Service {
 		
 		GradientDrawable BN_THUMB1 = new GradientDrawable();
         BN_THUMB1.setColor(Color.parseColor("#FF000000"));
-        BN_THUMB1.setCornerRadii(new float[]{20f, 20f, 20f, 20f, 20f, 20f, 20f, 20f});
-        BN_THUMB1.setStroke(4, Color.parseColor("#FFFAFAFA"));
+        BN_THUMB1.setCornerRadii(new float[]{(int)20,(int)20,(int)20,(int)20,(int)20,(int)20,(int)20,(int)20});
+	    BN_THUMB1.setStroke((int) 4, Color.parseColor("#FFFAFAFA"));
         closeBtn.setBackground(BN_THUMB1);
 		
         closeBtn.setOnClickListener(new View.OnClickListener() {
@@ -332,7 +328,7 @@ public class FloatingModMenuService extends Service {
                 mCollapsed.setVisibility(View.VISIBLE);
                 mCollapsed.setAlpha(ICON_ALPHA);
                 mExpanded.setVisibility(View.GONE);
-                Toast.makeText(view.getContext(), "\uD835\uDC11\uD835\uDC00\uD835\uDC0F\uD835\uDC08\uD835\uDC0D\uD835\uDC11\uD835\uDC0E \uD835\uDC07\uD835\uDC00\uD835\uDC02\uD835\uDC0A", Toast.LENGTH_LONG).show();
+                Toast.makeText(view.getContext(), "𝐑𝐀𝐏𝐈𝐍𝐑𝐎 𝐇𝐀𝐂𝐊", Toast.LENGTH_LONG).show();
             }
         });
         //********** Params **********
@@ -364,7 +360,7 @@ public class FloatingModMenuService extends Service {
         mWindowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
         mWindowManager.addView(rootFrame, params);
 
-        final Handler handler = new Handler(Looper.getMainLooper());
+        final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             boolean viewLoaded = false;
 
@@ -375,7 +371,7 @@ public class FloatingModMenuService extends Service {
                 if (Preferences.loadPref && !isGameLibLoaded() && !stopChecking) {
                     if (!viewLoaded) {
                         patches.addView(Category("Save preferences was been enabled. Waiting for game lib to be loaded...\n\nForce load menu may not apply mods instantly. You would need to reactivate them again"));
-                        patches.addView(Button(-100, "Force Load Menu"));
+                        patches.addView(Button(-100, "𝗙𝗼𝗿𝗰𝗲 𝗟𝗼𝗮𝗱 𝗠𝗲𝗻𝘂"));
                         viewLoaded = true;
                     }
                     handler.postDelayed(this, 600);
@@ -575,8 +571,8 @@ public class FloatingModMenuService extends Service {
         linearLayout.setGravity(Gravity.CENTER);
 
         final TextView textView = new TextView(this);
-        textView.setText(Html.fromHtml(featName + ": <font color='" + NumberTxtColor + "'>" + ((loadedProg == 0) ? min : loadedProg) + "</font>", Html.FROM_HTML_MODE_LEGACY));
-		textView.setTextColor(TEXT_COLOR_2);
+        textView.setText(Html.fromHtml(featName + ": <font color='" + NumberTxtColor + "'>" + ((loadedProg == 0) ? min : loadedProg)));
+        textView.setTextColor(TEXT_COLOR_2);
 
         SeekBar seekBar = new SeekBar(this);
         seekBar.setPadding(25, 10, 35, 10);
@@ -584,78 +580,67 @@ public class FloatingModMenuService extends Service {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
             seekBar.setMin(min); //setMin for Oreo and above
         seekBar.setProgress((loadedProg == 0) ? min : loadedProg);
-        Drawable thumb = seekBar.getThumb();
-		if (thumb != null) {
-			thumb.setTint(SeekBarColor);
-}
-
-Drawable progressDrawable = seekBar.getProgressDrawable();
-if (progressDrawable != null) {
-    progressDrawable.setTint(SeekBarProgressColor);
-    seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-        public void onStartTrackingTouch(SeekBar seekBar) {
-        }
-
-        public void onStopTrackingTouch(SeekBar seekBar) {
-        }
-
-        public void onProgressChanged(SeekBar seekBar, int i, boolean z) {
-            seekBar.setProgress(i < min ? min : i);
-            Preferences.changeFeatureInt(featName, featNum, i < min ? min : i);
-            textView.setText(Html.fromHtml(featName + ": <font color='" + NumberTxtColor + "'>" + (i < min ? min : i) + "</font>", Html.FROM_HTML_MODE_LEGACY));
-        }
-    });
-    linearLayout.addView(textView);
-    linearLayout.addView(seekBar);
-
-    return linearLayout;
-	}
-		return null;
-	}
-
-private View Button(final int featNum, final String featName) {
-    final Button button = new Button(this);
-    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-        LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
-    layoutParams.setMargins(7, 5, 7, 5);
-    button.setLayoutParams(layoutParams);
-    button.setTextColor(TEXT_COLOR_2);  // Убедитесь, что TEXT_COLOR_2 определен
-    button.setAllCaps(false);  // Отключение верхнего регистра
-    button.setText(HtmlCompat.fromHtml(featName, HtmlCompat.FROM_HTML_MODE_LEGACY));
-
-    // Настройка фоновой картинки с помощью GradientDrawable
-    GradientDrawable BN_THUMB = new GradientDrawable();
-    BN_THUMB.setColor(Color.parseColor("#FF736C6C"));  // Пример цвета
-    BN_THUMB.setCornerRadii(new float[]{60f, 60f, 60f, 60f, 60f, 60f, 60f, 60f});  // Радиус углов
-    BN_THUMB.setStroke(3, Color.parseColor("#FF000000"));  // Обводка
-    button.setBackground(BN_THUMB);  // Устанавливаем градиентный фон для кнопки
-
-    // Устанавливаем обработчик клика для кнопки
-    button.setOnClickListener(new View.OnClickListener() {
-        public void onClick(View v) {
-            switch (featNum) {
-                case -4:
-                    Logcat.Save(getApplicationContext()); // Убедитесь, что Logcat определен
-                    break;
-                case -5:
-                    Logcat.Clear(getApplicationContext());
-                    break;
-                case -6:
-                    scrollView.removeView(mSettings); // Убедитесь, что scrollView и mSettings определены
-                    scrollView.addView(patches); // Убедитесь, что patches определены
-                    break;
-                case -100:
-                    stopChecking = true; // Убедитесь, что stopChecking определен
-                    break;
+        seekBar.getThumb().setColorFilter(SeekBarColor, PorterDuff.Mode.SRC_ATOP);
+        seekBar.getProgressDrawable().setColorFilter(SeekBarProgressColor, PorterDuff.Mode.SRC_ATOP);
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            public void onStartTrackingTouch(SeekBar seekBar) {
             }
 
-            Preferences.changeFeatureInt(featName, featNum, 0); // Убедитесь, что Preferences определен
-        }
-    });
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
 
-    // Возвращаем кнопку после всех настроек
-    return button;
-}
+            public void onProgressChanged(SeekBar seekBar, int i, boolean z) {
+                //if progress is greater than minimum, don't go below. Else, set progress
+                seekBar.setProgress(i < min ? min : i);
+                Preferences.changeFeatureInt(featName, featNum, i < min ? min : i);
+                textView.setText(Html.fromHtml(featName + ": <font color='" + NumberTxtColor + "'>" + (i < min ? min : i)));
+            }
+        });
+        linearLayout.addView(textView);
+        linearLayout.addView(seekBar);
+
+        return linearLayout;
+    }
+
+    private View Button(final int featNum, final String featName) {
+        final Button button = new Button(this);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(MATCH_PARENT, MATCH_PARENT);
+        layoutParams.setMargins(7, 5, 7, 5);
+        button.setLayoutParams(layoutParams);
+        button.setTextColor(TEXT_COLOR_2);
+        button.setAllCaps(false); //Disable caps to support html
+        button.setText(Html.fromHtml(featName));
+        
+        GradientDrawable BN_THUMB = new GradientDrawable();
+        BN_THUMB.setColor(Color.parseColor("#FF736C6C"));
+        BN_THUMB.setCornerRadii(new float[]{(int)60,(int)60,(int)60,(int)60,(int)60,(int)60,(int)60,(int)60});
+	    BN_THUMB.setStroke((int) 3, Color.parseColor("#FF000000"));
+        button.setBackground(BN_THUMB);
+                
+        //button.setBackgroundColor(BTN_COLOR);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                switch (featNum) {
+                    case -4:
+                        Logcat.Save(getApplicationContext());
+                        break;
+                    case -5:
+                        Logcat.Clear(getApplicationContext());
+                        break;
+                    case -6:
+                        scrollView.removeView(mSettings);
+                        scrollView.addView(patches);
+                        break;
+                    case -100:
+                        stopChecking = true;
+                        break;
+                }
+                Preferences.changeFeatureInt(featName, featNum, 0);
+            }
+        });
+
+        return button;
+    }
 
     private View ButtonLink(final String featName, final String url) {
         final Button button = new Button(this);
@@ -664,13 +649,13 @@ private View Button(final int featNum, final String featName) {
         button.setLayoutParams(layoutParams);
         button.setAllCaps(false); //Disable caps to support html
         button.setTextColor(TEXT_COLOR_2);
-        button.setText(Html.fromHtml(featName, HtmlCompat.FROM_HTML_MODE_LEGACY));
+        button.setText(Html.fromHtml(featName));
         
         
         	GradientDrawable BN_THUMB = new GradientDrawable();
         BN_THUMB.setColor(Color.parseColor("#FF736C6C"));
-        BN_THUMB.setCornerRadii(new float[]{60f, 60f, 60f, 60f, 60f, 60f, 60f, 60f});
-        BN_THUMB.setStroke(3, Color.parseColor("#FF000000"));
+        BN_THUMB.setCornerRadii(new float[]{(int)60,(int)60,(int)60,(int)60,(int)60,(int)60,(int)60,(int)60});
+	    BN_THUMB.setStroke((int) 3, Color.parseColor("#FF000000"));
         button.setBackground(BN_THUMB);
         
         
@@ -696,11 +681,11 @@ private View Button(final int featNum, final String featName) {
         final String finalfeatName = featName.replace("OnOff_", "");
         boolean isOn = Preferences.loadPrefBool(featName, featNum, switchedOn);
         if (isOn) {
-            button.setText(Html.fromHtml(finalfeatName + ": ON", HtmlCompat.FROM_HTML_MODE_LEGACY));
+            button.setText(Html.fromHtml(finalfeatName + ": ON"));
             button.setBackgroundColor(BtnON);
             isOn = false;
         } else {
-            button.setText(Html.fromHtml(finalfeatName + ": OFF", HtmlCompat.FROM_HTML_MODE_LEGACY));
+            button.setText(Html.fromHtml(finalfeatName + ": OFF"));
             button.setBackgroundColor(BtnOFF);
             isOn = true;
         }
@@ -712,11 +697,11 @@ private View Button(final int featNum, final String featName) {
                 Preferences.changeFeatureBool(finalfeatName, featNum, isOn);
                 //Log.d(TAG, finalfeatName + " " + featNum + " " + isActive2);
                 if (isOn) {
-                    button.setText(Html.fromHtml(finalfeatName + ": ON", HtmlCompat.FROM_HTML_MODE_LEGACY));
+                    button.setText(Html.fromHtml(finalfeatName + ": ON"));
                     button.setBackgroundColor(BtnON);
                     isOn = false;
                 } else {
-                    button.setText(Html.fromHtml(finalfeatName + ": OFF", HtmlCompat.FROM_HTML_MODE_LEGACY));
+                    button.setText(Html.fromHtml(finalfeatName + ": OFF"));
                     button.setBackgroundColor(BtnOFF);
                     isOn = true;
                 }
@@ -726,7 +711,7 @@ private View Button(final int featNum, final String featName) {
     }
 
     private View Spinner(final int featNum, final String featName, final String list) {
-        Log.d(TAG, "spinner " + featNum + "," + featName + "," + list);
+        Log.d(TAG, "spinner " + featNum + " " + featName + " " + list);
         final List<String> lists = new LinkedList<>(Arrays.asList(list.split(",")));
 
         // Create another LinearLayout as a workaround to use it as a background
@@ -737,14 +722,14 @@ private View Button(final int featNum, final String featName) {
         linearLayout2.setOrientation(LinearLayout.VERTICAL);
         GradientDrawable BN_THUMB = new GradientDrawable();
         BN_THUMB.setColor(Color.parseColor("#FF000000"));
-        BN_THUMB.setCornerRadii(new float[]{0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f});
-        BN_THUMB.setStroke(3, Color.parseColor("#FF736C6C"));
+        BN_THUMB.setCornerRadii(new float[]{(int)0,(int)0,(int)0,(int)0,(int)0,(int)0,(int)0,(int)0});
+	    BN_THUMB.setStroke((int) 3, Color.parseColor("#FF736C6C"));
         linearLayout2.setBackground(BN_THUMB);
         linearLayout2.setLayoutParams(layoutParams2);
 
         final Spinner spinner = new Spinner(this, Spinner.MODE_DROPDOWN);
         spinner.setLayoutParams(layoutParams2);
-        spinner.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
+        spinner.getBackground().setColorFilter(1, PorterDuff.Mode.SRC_ATOP); //trick to show white down arrow color
         //Creating the ArrayAdapter instance having the list
         ArrayAdapter aa = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, lists);
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -778,19 +763,19 @@ private View Button(final int featNum, final String featName) {
         if (numOnly) {
             int num = Preferences.loadPrefInt(featName, featNum);
             edittextnum.setNum((num == 0) ? 0 : num);
-            button.setText(HtmlCompat.fromHtml(featName + ": <font color='" + NumberTxtColor + "'>" + "Default" + "</font>", HtmlCompat.FROM_HTML_MODE_LEGACY));
+            button.setText(Html.fromHtml(featName + ": <font color='" + NumberTxtColor + "'>" + "Default" ));
         } else {
             String string = Preferences.loadPrefString(featName, featNum);
             edittextstring.setString((string == "") ? "" : string);
-            button.setText(Html.fromHtml(featName + ": <font color='" + NumberTxtColor + "'>" + "Default" + "</font>", HtmlCompat.FROM_HTML_MODE_LEGACY));
+            button.setText(Html.fromHtml(featName + ": <font color='" + NumberTxtColor + "'>" + "Default" + "</font>"));
         }
         button.setAllCaps(false);
         
         
        GradientDrawable IV_THUMB = new GradientDrawable();
        IV_THUMB.setColor(Color.parseColor("#000000"));
-       IV_THUMB.setCornerRadii(new float[]{60f, 60f, 60f, 60f, 60f, 60f, 60f, 60f});
-       IV_THUMB.setStroke(3, Color.parseColor("#FFFFFF"));
+       IV_THUMB.setCornerRadii(new float[]{(int)60,(int)60,(int)60,(int)60,(int)60,(int)60,(int)60,(int)60});
+	   IV_THUMB.setStroke((int) 3, Color.parseColor("#FFFFFF"));
        button.setBackground(IV_THUMB);
        button.setTypeface(null, Typeface.BOLD);
 
@@ -820,15 +805,15 @@ private View Button(final int featNum, final String featName) {
 
                 GradientDrawable IV2_THUMB = new GradientDrawable();
                 IV2_THUMB.setColor(Color.parseColor("#000000"));
-                IV2_THUMB.setCornerRadii(new float[]{60f, 60f, 60f, 60f, 60f, 60f, 60f, 60f});
-                IV2_THUMB.setStroke(6, Color.parseColor("#FF0000"));
+                IV2_THUMB.setCornerRadii(new float[]{(int)60,(int)60,(int)60,(int)60,(int)60,(int)60,(int)60,(int)60});
+	            IV2_THUMB.setStroke((int) 6, Color.parseColor("#FF0000"));
                 linearLayout1.setBackground(IV2_THUMB);
               
                 //TextView
                 final TextView TextViewNote = new TextView(getApplicationContext());
                 TextViewNote.setText("Tap OK to apply changes. Tap outside to cancel");
                 if (maxValue != 0)
-                TextViewNote.setText("Tap OK to apply changes. Tap outside to cancel" + maxValue);
+                TextViewNote.setText("Tap OK to apply changes. Tap outside to cancel\nMax value: " + maxValue);
                 TextViewNote.setTextColor(TEXT_COLOR_2);
 
                 //Edit text
@@ -865,8 +850,8 @@ private View Button(final int featNum, final String featName) {
                 
                 GradientDrawable IV3_THUMB = new GradientDrawable();
                 IV3_THUMB.setColor(Color.parseColor("#FF0000"));
-                IV3_THUMB.setCornerRadii(new float[]{60f, 60f, 60f, 60f, 60f, 60f, 60f, 60f});
-                IV3_THUMB.setStroke(4, Color.parseColor("#FFFFFF"));
+                IV3_THUMB.setCornerRadii(new float[]{(int)60,(int)60,(int)60,(int)60,(int)60,(int)60,(int)60,(int)60});
+	            IV3_THUMB.setStroke((int) 4, Color.parseColor("#FFFFFF"));
                 btndialog.setBackground(IV3_THUMB);
 
                 btndialog.setText("OK");
@@ -983,7 +968,7 @@ private View Button(final int featNum, final String featName) {
         collapseSub.setVerticalGravity(16);
         collapseSub.setPadding(7, 5, 7, 5);
         collapseSub.setOrientation(LinearLayout.VERTICAL);
-        collapseSub.setBackgroundColor(Color.parseColor("#C40AEB"));
+        collapseSub.setBackgroundColor(Color.parseColor("#FFF20909"));
         collapseSub.setVisibility(View.GONE);
         mCollapse = collapseSub;
 
@@ -994,8 +979,8 @@ private View Button(final int featNum, final String featName) {
         textView.setTextColor(TEXT_COLOR_2);	
         	GradientDrawable BN_THUMB3 = new GradientDrawable();
         BN_THUMB3.setColor(Color.parseColor("#FF6E7173"));
-        BN_THUMB3.setCornerRadii(new float[]{10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f});
-        BN_THUMB3.setStroke(3, Color.parseColor("#FFF7F8F9"));
+        BN_THUMB3.setCornerRadii(new float[]{(int)10,(int)10,(int)10,(int)10,(int)10,(int)10,(int)10,(int)10});
+	    BN_THUMB3.setStroke((int) 3, Color.parseColor("#FFF7F8F9"));
         textView.setBackground(BN_THUMB3);
         textView.setTypeface(null, Typeface.BOLD);
         textView.setPadding(0, 20, 0, 20);
@@ -1014,7 +999,7 @@ private View Button(final int featNum, final String featName) {
                     return;
                 }
                 collapseSub.setVisibility(View.GONE);
-                textView.setText("" + text + "");
+                textView.setText(" " + text + " ");
             }
         });
         collapse.addView(textView);
