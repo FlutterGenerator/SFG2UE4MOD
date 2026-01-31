@@ -54,10 +54,9 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
-import androidx.core.text.HtmlCompat;
+import android.text.Html;
 import android.graphics.drawable.Drawable;
 import android.widget.SeekBar;
-import androidx.core.graphics.drawable.DrawableCompat;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -154,7 +153,7 @@ public class FloatingModMenuService extends Service {
         mCollapsed.setAlpha(ICON_ALPHA);
 
         //********** The box of the mod menu **********
-mExpanded = new LinearLayout(this); // Menu markup (when the menu is expanded)
+        mExpanded = new LinearLayout(this); // Menu markup (when the menu is expanded)
         mExpanded.setVisibility(View.GONE);
        	GradientDrawable BN_THUMB5 = new GradientDrawable();
         BN_THUMB5.setColor(Color.parseColor("#FF000000"));
@@ -576,8 +575,8 @@ mExpanded = new LinearLayout(this); // Menu markup (when the menu is expanded)
         linearLayout.setGravity(Gravity.CENTER);
 
         final TextView textView = new TextView(this);
-        textView.setText(HtmlCompat.fromHtml(featName + ": <font color='" + NumberTxtColor + "'>" + ((loadedProg == 0) ? min : loadedProg) + "</font>", HtmlCompat.FROM_HTML_MODE_LEGACY));
-textView.setTextColor(TEXT_COLOR_2);
+        textView.setText(Html.fromHtml(featName + ": <font color='" + NumberTxtColor + "'>" + ((loadedProg == 0) ? min : loadedProg) + "</font>", Html.FROM_HTML_MODE_LEGACY));
+		textView.setTextColor(TEXT_COLOR_2);
 
         SeekBar seekBar = new SeekBar(this);
         seekBar.setPadding(25, 10, 35, 10);
@@ -586,8 +585,8 @@ textView.setTextColor(TEXT_COLOR_2);
             seekBar.setMin(min); //setMin for Oreo and above
         seekBar.setProgress((loadedProg == 0) ? min : loadedProg);
         Drawable thumb = seekBar.getThumb();
-if (thumb != null) {
-    thumb.setTint(SeekBarColor);
+		if (thumb != null) {
+			thumb.setTint(SeekBarColor);
 }
 
 Drawable progressDrawable = seekBar.getProgressDrawable();
@@ -603,7 +602,7 @@ if (progressDrawable != null) {
         public void onProgressChanged(SeekBar seekBar, int i, boolean z) {
             seekBar.setProgress(i < min ? min : i);
             Preferences.changeFeatureInt(featName, featNum, i < min ? min : i);
-            textView.setText(HtmlCompat.fromHtml(featName + ": <font color='" + NumberTxtColor + "'>" + (i < min ? min : i) + "</font>", HtmlCompat.FROM_HTML_MODE_LEGACY));
+            textView.setText(Html.fromHtml(featName + ": <font color='" + NumberTxtColor + "'>" + (i < min ? min : i) + "</font>", Html.FROM_HTML_MODE_LEGACY));
         }
     });
     linearLayout.addView(textView);
@@ -665,7 +664,7 @@ private View Button(final int featNum, final String featName) {
         button.setLayoutParams(layoutParams);
         button.setAllCaps(false); //Disable caps to support html
         button.setTextColor(TEXT_COLOR_2);
-        button.setText(HtmlCompat.fromHtml(featName, HtmlCompat.FROM_HTML_MODE_LEGACY));
+        button.setText(Html.fromHtml(featName, HtmlCompat.FROM_HTML_MODE_LEGACY));
         
         
         	GradientDrawable BN_THUMB = new GradientDrawable();
@@ -701,7 +700,7 @@ private View Button(final int featNum, final String featName) {
             button.setBackgroundColor(BtnON);
             isOn = false;
         } else {
-            button.setText(HtmlCompat.fromHtml(finalfeatName + ": OFF", HtmlCompat.FROM_HTML_MODE_LEGACY));
+            button.setText(Html.fromHtml(finalfeatName + ": OFF", HtmlCompat.FROM_HTML_MODE_LEGACY));
             button.setBackgroundColor(BtnOFF);
             isOn = true;
         }
@@ -717,7 +716,7 @@ private View Button(final int featNum, final String featName) {
                     button.setBackgroundColor(BtnON);
                     isOn = false;
                 } else {
-                    button.setText(HtmlCompat.fromHtml(finalfeatName + ": OFF", HtmlCompat.FROM_HTML_MODE_LEGACY));
+                    button.setText(Html.fromHtml(finalfeatName + ": OFF", HtmlCompat.FROM_HTML_MODE_LEGACY));
                     button.setBackgroundColor(BtnOFF);
                     isOn = true;
                 }
