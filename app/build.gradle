@@ -4,12 +4,12 @@ plugins {
 
 android {
     namespace "Tojik.Mods"
-    compileSdk 33  
+    compileSdk 34
 
     defaultConfig {
         applicationId "Tojik.Mods"
         minSdk 21
-        targetSdk 33 
+        targetSdk 34
         versionCode 33
         versionName "2.9"
 
